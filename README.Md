@@ -1,6 +1,6 @@
 # LIGOSPORT
 
-## The is to simple with three endpoints to create game stats for a player, get all the game stats and get the totals of the players stats for the season.
+## The is a simple app with three endpoints to create game stats for a player, get all the game stats and get the totals of the player's stats for the season.
 
 
 ## Built With
@@ -13,7 +13,7 @@
 
 
 ## API DOCUMENTATION
-
+#### Run the application and check the documentation
 ### [Documentation](http://localhost:5000/api-docs)
 
 ## Getting Started

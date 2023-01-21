@@ -1,16 +1,26 @@
 const http = require('http');
-const swaggerUI = require('swagger-ui-express');
 
 require('dotenv').config();
 const db = require('./models');
 const app = require('./app');
 const port = process.env.PORT || 3000;
 
-// app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
+const server = http.createServer(app);
+
+process.on('uncaughtException', (err) => {
+  console.log(err.name, err.message);
+  process.exit(1);
+});
 
 db.sequelize.sync().then(() => {
-  const server = http.createServer(app);
   server.listen(port, () => {
     console.log(`App is listening on ${port}`);
+  });
+});
+
+process.on('unhandledRejection', (err) => {
+  console.log(err.name, err.message);
+  server.close(() => {
+    process.exit(1);
   });
 });

@@ -3,10 +3,10 @@ const gamesRoute = require('./routes')
 const cors = require('cors');
 require('dotenv').config();
 
-const ErrorMsg = require('./utils/ErrorMsg');
-const globalErrorHandler = require('./controllers/errorController');
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
+const ErrorMsg = require('./utils/ErrorMsg');
+const globalErrorHandler = require('./controllers/errorController');
 const port = process.env.PORT || 3000;
 
 const options = {
