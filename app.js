@@ -2,12 +2,18 @@ const express = require('express');
 const gamesRoute = require('./routes')
 const cors = require('cors');
 require('dotenv').config();
+const helmet = require('helmet');
+const xss = require('xss-clean');
 
 const swaggerUI = require('swagger-ui-express');
 const swaggerJsDoc = require('swagger-jsdoc');
 const ErrorMsg = require('./utils/ErrorMsg');
 const globalErrorHandler = require('./controllers/errorController');
 const port = process.env.PORT || 3000;
+const app = express();
+
+
+app.use(helmet());
 
 const options = {
   definition: {
@@ -29,11 +35,11 @@ const options = {
 const specs = swaggerJsDoc(options);
 
 
-const app = express();
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(specs));
 
 app.use(cors('*'));
 app.use(express.json());
+app.use(xss());
 
 app.use('/api/', gamesRoute);
 

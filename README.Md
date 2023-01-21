@@ -118,7 +118,7 @@ docker exec -it ligos_app npm run seed-data
 
 Contributions, issues and feature requests are welcome!
 
-Feel free to check the [issues page](https://github.com/Nasa28/ligosport/issues).
+Feel free to check the [issues page](https://github.com/Nasa28/ligosports-/issues).
 
 ## Show your support
 
