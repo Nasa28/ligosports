@@ -1,0 +1,40 @@
+version: '3.8'
+services:
+  ligos:
+      image: ligos
+      container_name: 'ligos_app'
+      build:
+        context: .
+      restart: unless-stopped
+      env_file: .env
+      ports:
+        - '5000:5000'
+      expose:
+        - 5000
+      depends_on:
+         - db
+      networks:
+         - ligos-network
+  db:
+    image: 'mysql:8'
+    container_name: 'ligos_db'
+    restart: unless-stopped
+    volumes:
+      - mydb:/var/lib/mysql
+    environment:
+       MYSQL_ROOT_PASSWORD: ${PASSWORD}
+       MYSQL_DATABASE: ${DEV_DATABASE}
+    expose:
+      - 3306
+    networks:
+      - ligos-network
+
+volumes:
+  mydb:
+  test-db:
+
+
+
+networks:
+  ligos-network:
+
